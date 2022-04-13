@@ -5,8 +5,118 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SwissTransportGUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Öv-Planer" Height="450" Width="830">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="80*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25*" />
+            <RowDefinition Height="25*" />
+            <RowDefinition Height="25*" />
+            <RowDefinition Height="25*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Margin="5">
+            <Button x:Name="btnVerbindung" Background="white" BorderThickness="0" Click="btnVerbindung_Click" >
+                <Image Width="60" Source="C:\projects\M318-ProjektArbeit\images\Lupe.png" />
+            </Button>
+            <TextBlock Text="Verbindung Suchen" TextAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Margin="5">
+            <Button x:Name="btnAbfahrtstafel" Background="white" BorderThickness="0" Click="btnAbfahrtstafel_Click" >
+                <Image Width="60" Source="C:\projects\M318-ProjektArbeit\images\Bus.png" />
+            </Button>
+            <TextBlock Text="Abfahrtstafel" TextAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Margin="5">
+            <Button x:Name="btnHaltestelle" Background="white" BorderThickness="0" >
+                <Image Width="60" Source="C:\projects\M318-ProjektArbeit\images\Standort.png" />
+            </Button>
+            <TextBlock Text="Nächste Haltestelle" TextAlignment="Center"/>
+        </StackPanel>
+        <TabControl x:Name="tabCtrl" Grid.Column="1" Grid.RowSpan="4" Margin="0,-22,0,0" Background="Lightgray" SelectionChanged="tabCtrl_SelectionChanged">
+            <TabItem Header="VerbindungSuchen" Visibility="hidden">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="20*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
 
+                    <GroupBox Grid.ColumnSpan="3" Grid.Row="0" Margin="5" Header="Verbindung Suchen">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="40*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30*"/>
+                                <RowDefinition Height="30*"/>
+                                <RowDefinition Height="30*"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Column="0" Grid.Row="0" Margin="0,5,0,0">Von</Label>
+                            <Label Grid.Column="0" Grid.Row="1" Margin="0,5,0,0">Bis</Label>
+                            <Label Grid.Column="0" Grid.Row="3" Margin="0,5,0,0">Datum</Label>
+                            <TextBox x:Name="txtboxVon" Grid.Column="1" Grid.Row="0" Margin="0,5,0,0" Grid.ColumnSpan="3"></TextBox>
+                            <TextBox x:Name="txtboxBis" Grid.Column="1" Grid.Row="1" Margin="0,5,0,0" Grid.ColumnSpan="3"></TextBox>
+                            <TextBox x:Name="txtboxDatum" Grid.Column="1" Grid.Row="2" Margin="0,5,0,0"/>
+                            <Label Content="Uhrzeit" Grid.Row="3" Grid.Column="2" Margin="0,5,0,0"/>
+                            <TextBox x:Name="txtboxUhrzeit" Grid.Column="3" Grid.Row="2" Margin="0,5,0,0" />
+                            <Button x:Name="btnSuchezuruecksetzen" Grid.Column="4" Grid.Row="0" Margin="20,5,5,0" Content="Suche zurücksetzen" Click="btnSuchezuruecksetzen_Click"></Button>
+                        </Grid>
+                    </GroupBox>
+                    <DataGrid x:Name="dataGridVerbindungen" Grid.Row="3" Grid.ColumnSpan="3" Margin="0,5,0,5"/>
+                    <Label Margin="0,5,0,0" Grid.Row="1">Verbindungen</Label>
+                    <Button x:Name="btnVerbindunganzeigen" Grid.Column="2" Grid.Row="1" Margin="0,5,0,0" Content="Verbindungen anzeigen" Click="btnVerbindunganzeigen_Click" ></Button>
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="20*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <GroupBox Grid.ColumnSpan="3" Grid.Row="0" Margin="5" Header="Station Suchen">
+                        <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="40*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30*"/>
+                            <RowDefinition Height="30*"/>
+                            <RowDefinition Height="30*"/>
+                        </Grid.RowDefinitions>
+                            <Label Grid.Column="0" Grid.Row="0" Margin="0,5,0,0">Station</Label>
+                            <ComboBox x:Name="comboboxStationSuchen" Grid.Column="1" Grid.Row="0" Margin="0,5,0,0" Grid.ColumnSpan="3" IsEditable="True" TextBoxBase.TextChanged="comboboxStationSuchen_TextChanged"/>
+                            <Button x:Name="btnStationzuruecksetzen" Grid.Column="4" Grid.Row="0" Margin="20,5,5,0" Content="Suche zurücksetzen" Click="btnStationzuruecksetzen_Click"></Button>
+                        </Grid>
+                    </GroupBox>
+                    <Label Grid.Column="0" Grid.Row="1" Margin="0,5,0,0">Abfahrtstafel</Label>
+                    <Button x:Name="btnStationSuchen" Grid.Column="2" Grid.Row="1" Margin="20,5,5,0" Content="Stationen Anzeigen" Click="btnStationSuchen_Click" ></Button>
+                    <DataGrid x:Name="dataGridStationen" Grid.Row="3" Grid.ColumnSpan="3" Margin="0,5,0,5"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
