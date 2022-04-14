@@ -19,13 +19,13 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Margin="5">
             <Button x:Name="btnVerbindung" Background="white" BorderThickness="0" Click="BtnVerbindungClick" >
-                <Image Width="60" Source="C:\projects\M318-ProjektArbeit\images\Lupe.png" />
+                <Image Width="60" Source="/Assets/Lupe.png" />
             </Button>
             <TextBlock Text="Verbindung Suchen" TextAlignment="Center"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Margin="5">
             <Button x:Name="btnAbfahrtstafel" Background="white" BorderThickness="0" Click="BtnAbfahrtstafelClick" >
-                <Image Width="60" Source="C:\projects\M318-ProjektArbeit\images\Bus.png" />
+                <Image Width="60" Source="/Assets/Bus.png" />
             </Button>
             <TextBlock Text="Abfahrtstafel" TextAlignment="Center"/>
         </StackPanel>
