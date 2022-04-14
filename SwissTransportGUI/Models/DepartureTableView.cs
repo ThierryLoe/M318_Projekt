@@ -14,10 +14,8 @@ namespace SwissTransportGUI.Models
             Linie = departurePlatform;
         }
 
-        public string Richtung { get; set; }
-        public string DatumZeit { get; set; }
-        public string Linie { get; set; }
-
-        
+        public string Richtung { get; set; } = string.Empty;
+        public string DatumZeit { get; set; } = string.Empty;
+        public string Linie { get; set; } = string.Empty;
     }
 }

@@ -15,12 +15,12 @@ namespace SwissTransportGUI.Models
             Nach = arrivalStation;
             AbfahrtsGleis = depaturePlatform;
             AnkunftsGleis = arrivalPlatform;
-          
         }
-        public string Von { get; set; }
-        public string Zeit { get; set; }   
-        public string Nach { get; set; } 
-        public string AbfahrtsGleis { get; set; }
-        public string AnkunftsGleis { get; set; }
+
+        public string Von { get; set; } = string.Empty;
+        public string Zeit { get; set; } = string.Empty;
+        public string Nach { get; set; } = string.Empty;
+        public string AbfahrtsGleis { get; set; } = string.Empty;
+        public string AnkunftsGleis { get; set; } = string.Empty;
     }
 }
